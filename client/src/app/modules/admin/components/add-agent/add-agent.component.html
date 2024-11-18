@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row w-100 d-flex align-items-center">
+        <div class="col-md-6 order-md-1 mb-4">
+            <img src="https://img.freepik.com/free-vector/partnership-concept-illustration_114360-5954.jpg?size=626&ext=jpg&ga=GA1.2.796843707.1683431325&semt=sph"
+                alt="" class="image img-fluid">
+        </div>
+        <div class="col-md-6 order-md-2">
+            <form [formGroup]="complaintForm" #r="ngForm" (ngSubmit)="onSubmit(r.value)" class="form">
+                <div class="form-group">
+                    <label for="name">Agent Name</label>
+                    <input placeholder="Enter name" type="text" class="form-control" id="name" formControlName="name"
+                        required>
+                    <div *ngIf="complaintForm.controls['name'].touched && complaintForm.controls['name']?.['errors']">
+                        <div *ngIf="complaintForm.controls['name']?.['errors']?.['required']"
+                            class="error-message text-danger">
+                            Name is required
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 w-100 mb-4"
+                    [disabled]="complaintForm.invalid">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

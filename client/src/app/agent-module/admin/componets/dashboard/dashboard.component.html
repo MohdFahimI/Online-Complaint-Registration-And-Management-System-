@@ -1,0 +1,12 @@
+<div class="container p-4">
+    <h2>Complaints</h2>
+    <ul class="list-group">
+        <li class="list-group-item mb-4 border" *ngFor="let complaint of complaints">
+            <strong>Complaint:</strong> {{ complaint.complaintDetails }}<br>
+            <strong>Customer Name:</strong> {{ complaint.customer.username }}<br>
+            <strong>Customer Phone:</strong> {{ complaint.customer.phone }}<br>
+            <strong>Agent ID:</strong> {{ complaint.agent }}<br>
+            <button class="btn btn-primary" [routerLink]="['/agent/chat', complaint.customer._id]">Message</button>
+        </li>
+    </ul>
+</div>

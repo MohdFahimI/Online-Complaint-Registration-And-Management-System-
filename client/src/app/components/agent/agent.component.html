@@ -1,0 +1,12 @@
+<div class="container p-4">
+    <h2>Agents Messages</h2>
+    <ul class="list-group">
+      <li class="list-group-item mb-4 border" *ngFor="let notification of notifications">
+        <strong>Sender Name:</strong> {{ notification.senderId.firstname }} {{ notification.senderId.lastname }}<br>
+        <strong>Sender Email:</strong> {{ notification.senderId.email }}<br>
+        <strong>Message:</strong> {{ notification.content }}<br>
+        <button class="btn btn-primary"  routerLink="/chat/{{notification.senderId._id}}">Message</button>
+      </li>
+    </ul>
+  </div>
+  

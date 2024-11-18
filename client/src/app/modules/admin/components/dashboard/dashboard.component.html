@@ -1,0 +1,15 @@
+<div class="container-fluid p-4 w-100">
+    <h2 style="font-size: 26px; font-family: 'Roboto'; font-weight: bold;">Dashboard</h2>
+    <div class="row">
+      <div class="col-md-6 col-sm-12" *ngFor="let item of data">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight: bold;">{{ item.name }}</h5>
+            <p class="card-text">{{ item.count }}</p>
+            <a [routerLink]="item.routerLink" class="btn btn-primary">Go to {{ item.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

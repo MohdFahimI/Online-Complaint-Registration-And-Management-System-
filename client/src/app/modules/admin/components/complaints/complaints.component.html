@@ -1,0 +1,48 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="font-weight: bold;">All Complaints</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6" *ngFor="let complaint of complaints">
+            <div class="card mb-4" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title"><span style="font-weight: bold; font-size: 20px;">Id:</span> {{ complaint._id
+                        }}</h5>
+                    <p class="card-text"><span style="font-weight: bold; font-size: 20px;">Complaint:</span> {{
+                        complaint.complaintDetails }}</p>
+                    <p class="card-text"><span style="font-weight: bold; font-size: 20px;">Date:</span> {{
+                        complaint.createdAt | date: 'medium' }}</p>
+                        <div class="w-100 d-flex justify-content-between align-items-center">
+                            <ng-container *ngIf="!complaint.showDropdown">
+                                <p class="card-text"><span style="font-weight: bold; font-size: 20px;">Status:</span> {{ complaint.status }}</p>
+                                <button class="btn btn-warning" *ngIf="complaint.status === 'pending'" (click)="complaint.showDropdown = true">Change Status</button>
+                                <button class="btn btn-success" *ngIf="complaint.status === 'solved'" disabled="true">Completed</button>
+                            </ng-container>
+                            <ng-container *ngIf="complaint.showDropdown">
+                                <select class="form-select" [ngModel]="complaint.status" (ngModelChange)="complaint.status = $event">
+                                    <option value="pending">Pending</option>
+                                    <option value="solved">Solved</option>
+                                </select>
+                                <button class="btn btn-primary" (click)="onSubmitStatus(complaint._id, complaint.status)">Submit</button>
+                            </ng-container>
+                        </div>
+                        
+                    <p> <span style="font-weight: bold; font-size: 20px;">Agent Id:</span> {{complaint.agent}}</p>
+                    <label for="" *ngIf="complaint.agent === ' '">Select Agent</label>
+                    <div class="row" *ngIf="complaint.agent === ' '">
+                        <div class="d-flex">
+                          <select class="form-select" [(ngModel)]="complaint.selectedAgent">
+                            <option *ngFor="let agent of agents" [value]="agent._id">{{ agent.firstname }}</option>
+                          </select>
+                          <button class="btn btn-primary" (click)="onAssign(complaint.customer, complaint._id, complaint.selectedAgent)">Assign</button>
+                          
+                        </div>
+                      </div>
+                      <button class="btn btn-primary" *ngIf="complaint.agent !== ' '" [disabled]="complaint.agent !== ' '" (click)="onAssign(complaint.customer, complaint._id, complaint.selectedAgent)">Assigned to Agent</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

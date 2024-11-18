@@ -1,0 +1,53 @@
+.sidebar-container{
+    width: 20%;
+    height: 90vh;
+    background-color: #011932;
+}
+@media screen and (max-width:768px) {
+    .sidebar-container{
+        display: none;
+    }
+}
+
+.message-container{
+    width: 80%;
+}
+@media screen and (max-width:768px) {
+    .message-container{
+        width: 100%;
+    }
+}
+
+
+
+.profile-image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.chat-container{
+    padding: 4px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #455668;    
+}
+
+.message-list{
+    height: 90vh;
+    overflow: auto;
+    padding: 10px;
+}
+
+.input-group{
+    height: 8vh;
+    margin-top: 10px;
+}
+
+@media screen and (max-width:768px) {
+    app-sidebar{
+        display: none;
+    }
+}
